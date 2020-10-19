@@ -1,3 +1,3 @@
 # FusionA
 
-FusionA is written usgin [GAP](https://www.gap-system.org/) and computes the S and T matrix and the fusion algebra of the modular categories SU(N)_k
+FusionA is written in [GAP](https://www.gap-system.org/) and computes the modular data and the fusion algebra of the modular categories SU(N)_k
