@@ -47,7 +47,8 @@ gap> time;
 5
 ```
 
-The modular data is computed as follows:
+The modular data is computed as follows: (Recall that $E(n)$ means the complex number $Exp(2 \pi i/n)$ )
+
 ```GAP
 gap> A12:=ModularData_TipoA(1,2);;
 gap> S:=A12.Smatrix;;
@@ -64,3 +65,4 @@ gap> A45:=ModularData_TipoA(4,5);; # 126 simples
 gap> time;
 8521
 ```
+
