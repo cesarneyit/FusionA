@@ -130,7 +130,7 @@ end;
 # la base canonica como una lista ordenada siguiendo.
 #######################################
 FusionAlgebra:=function(n,k)
-local T,x,y,d,Alg,base;
+local T,x,y,d,Alg,base,Base;
 N:=Test_verlinde(n,k);; # lista de matrices (N_i)_{jk}=N_{ij}^k
 d:=Size(N);; # dimension del algebra de fusion
 T:=NullMat(d,d);;
@@ -144,6 +144,11 @@ for x in [1..d]
 Append(T,[1,0]); # datos adicionales pedidos por GAP
 Alg:=AlgebraByStructureConstants( Rationals, T );;
 base:=BasisVectors( CanonicalBasis( Alg ) );;
-return rec(FusionAlgebra:=Alg,simples:=base);
+Base:=rec();
+for x in [1..Size(base)] 
+    do
+        Base.(x):=base[x];
+    od;
+return rec(FusionAlgebra:=Alg,Simples:=Base);
 end;
 
