@@ -88,10 +88,11 @@ gap> v.2*v.3;
 v.2
 
 ```
-As a bigger example let us compute some fusion products of $SU(5,5)$. 
+As a bigger example let us compute some fusion products of $SU(5,5)$ that has 126 simples. 
 
 ```GAP
 Size(Labels_A(4,5)); # Number of simple of SU(5,5)
+126
 gap> A45:=FusionAlgebra(4,5);;time; # it takes some time
 814672
 gap> v:=A45.Simples;; #record with the simples
