@@ -1,6 +1,6 @@
 # Readme
 
-FusionA is written in [GAP](https://www.gap-system.org/) and computes the modular data and the fusion algebra of the modular categories $SU(N)_k$ or equivalently the semisimplification of $U_q(sl_N)$ for $q$ a primitive root of order $2(N+1+k)$.
+FusionA is written in [GAP](https://www.gap-system.org/) and computes the modular data and the fusion algebra of the modular categories $SU(N)_k$ or equivalently the semisimplification of tilting representation of  $U_q(sl_N)$ for $q$ a primitive root of order $2(N+1+k)$.
 
 ## Using FusionA
 The simple objects of $SU(N)_k$ are displayed as N-tuples of non-negative integers. The following function displays information on labels and twists.
