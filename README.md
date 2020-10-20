@@ -101,7 +101,7 @@ In general, v.1 is the unit object, v.2 is the standard the representation and v
 
 
 ```GAP
-# the first power of v.2 where v.1 should be 5
+# the first power of v.2 where v.1 appears should be 5
 gap> v.2^2;
 v.3+v.7
 gap> v.2^3;
