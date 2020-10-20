@@ -22,9 +22,9 @@ DagaMatrix:=function(U)
 return TransposedMat( ComplexConjugate(U) );
 end;
 
-########
+#######################################
 # comprueba si U es unitaria
-#########
+#######################################
 
 IsUnitaryMatrix:=function(U)
 local v,n;
@@ -38,11 +38,11 @@ end;
 
 
 
-#########
+#######################################
 # Suma de Gauss de un dato modular
 #  S y T es el dato modular
 # signo debe ser 1 o -1
-#############
+#######################################
 
 Gauss_Sum:=function(S,T,signo)
 local k,s,x;
@@ -55,50 +55,12 @@ return k;
 end;
 
 
-
-#######
-# Calcula dato modular de A_n en nivel principal k
-#  En otras palabras el dato modular de SU(N+1)_k
-#########
-ModularData_TipoA:=function(n,k)
-local R,labels,S,T,Labels, i;
-R:= RootSystem( SimpleLieAlgebra( "A", n, Rationals ) );;
-labels:=Labels_A(n,k);
-S:=SMatrix(R,k,labels);
-T:=Tmatrix(R,k,labels);
-Labels:=rec();
-for i in [1..Size(labels)] do
-        Labels.(i):=labels[i];
-    od;
-return rec(Smatrix:=S,Tmatrix:=T,labels:=Labels);
-end;
-
-
-
-
-#######
-# Velinde N^z_{xy}
-# Calcula la formula Dim(C)*N^z_{xy}=\Sum_w \frac{S_{xw}S_{yw}\overline{S_{zw}}}{S_{0w}}
-#######
-Velinde_xyz:=function(S,x,y,z)
-local k,w,n,D;
-D:=S[1]*S[1];
-n:=Size(S);
-k:=0;
-for w in [1..n] do
-    k:=k+S[x][w]*S[y][w]*ComplexConjugate(S[z][w])*S[1][w]^(-1);
-od;
-return D^(-1)*k;
-end;
-
-
-
-######
-# Formula de verlinde MEJORADA
+#######################################
+# Formula de verlinde
 # Dada S constuye una lista
 # N cuya entrada i-esima contien
 # la matriz (N_i)_{jk}=N_{i,j}^k
-#######
+#######################################
 Verlinde_formula:=function(S)
 local N,tmp,x,y,z,n,D;
 n:=Size(S);
@@ -114,12 +76,12 @@ end;
 
 
 
-######
+#######################################
 # Formula de verlinde MEJORADA
 # Dada S y un label i construye
 # N_i cuya entrada i-esima contiene
 # la matriz (N_i)_{jk}=N_{i,j}^k
-#######
+#######################################
 Verlinde_N:=function(S,x)
 local N,tmp,y,z,n,D;
 n:=Size(S);
@@ -130,10 +92,9 @@ return D^(-1)*S*tmp*ComplexConjugate(S);
 end;
 
 
-######
-#
+#######################################
 # Test de verlinde
-########
+#######################################
 Test_verlinde:=function(n,k)
 local MD,test;
 MD:=ModularData_TipoA(n,k);
@@ -141,5 +102,48 @@ return Verlinde_formula(MD.Smatrix);
 end;
 
 
+#######################################
+# Funcion usada para entrar 
+# los coeficientes de estructura en la funcion StructureConstantsTable
+# Nij es una fila con Nij[k]=N_{ij}^k
+#######################################
+FormatoTabla:=function(Nij)
+local d,x,posicion,coeficientes;
+d:=Size(Nij);
+posicion:=[];
+coeficientes:=[];
+for x in [1..d] 
+    do
+        if  Nij[x] <>  0 then
+            Append(posicion,[x]);
+            Append(coeficientes,[Nij[x]]);
+        fi; 
+    od;
+return [posicion,coeficientes];
+end;
 
+
+#######################################
+# Fusion principal
+# Estacion produce un registro que 
+# contiene el algebra de fusion y por comodidad
+# la base canonica como una lista ordenada siguiendo.
+#######################################
+FusionAlgebra:=function(n,k)
+local T,x,y,d,Alg,base;
+N:=Test_verlinde(n,k);; # lista de matrices (N_i)_{jk}=N_{ij}^k
+d:=Size(N);; # dimension del algebra de fusion
+T:=NullMat(d,d);;
+for x in [1..d]
+    do
+        for y in [1..d]
+            do 
+                T[x][y]:=FormatoTabla(N[x][y]);
+            od;
+    od;
+Append(T,[1,0]); # datos adicionales pedidos por GAP
+Alg:=AlgebraByStructureConstants( Rationals, T );;
+base:=BasisVectors( CanonicalBasis( Alg ) );;
+return rec(FusionAlgebra:=Alg,simples:=base);
+end;
 
