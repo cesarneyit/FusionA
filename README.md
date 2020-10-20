@@ -66,3 +66,55 @@ gap> time;
 8521
 ```
 
+## Fusion algebra
+
+The following example shows how to compute the fusion algebra of the Ising using FusionA: 
+
+```
+gap> Ising:=FusionAlgebra(1,2);; # Ising corresponds to SU(2)_2
+gap> v:=Ising.Simples;; # v will be a register with the simples in the same orden obstained with the function Display_labels
+gap> Display_labels(1,2);
+
+L.   Grnd.   Twist
+(1)   [ 0 ]   0
+(2)   [ 1 ]   3/16
+(3)   [ 2 ]   1/2
+
+gap> v.2*v.2;
+v.1+v.3
+gap> v.3*v.3;
+v.1
+gap> v.2*v.3;
+v.2
+
+```
+As a bigger example let us compute some fusion products of $SU(5,5)$. 
+
+```
+Size(Labels_A(4,5)); # Number of simple of SU(5,5)
+gap> A45:=FusionAlgebra(4,5);;time; # it takes some time
+814672
+gap> v:=A45.Simples;; #record with the simples
+```
+In general, v.1 is the unit object, v.2 is the standard the representation and v.126 (last label) is the generator of the invertibles.
+
+
+````
+gap> v.2^2;
+v.3+v.7
+gap> v.2^3;
+v.4+(2)*v.8+v.22
+gap> v.2^4;
+v.5+(3)*v.9+(2)*v.12+(3)*v.23+v.57
+gap> v.2^5;
+v.1+v.6+(4)*v.10+(5)*v.13+(6)*v.24+(5)*v.27+(4)*v.58
+gap> v.126^2;
+v.56
+gap> v.126^3;
+v.21
+gap> v.126^5;
+v.1
+gap> v.126^4;
+v.6
+````
+
