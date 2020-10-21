@@ -130,7 +130,7 @@ end;
 # la base canonica como una lista ordenada siguiendo.
 #######################################
 FusionAlgebra:=function(n,k)
-local T,x,y,d,Alg,base,Base;
+local T,x,y,d,Alg,base,Base,N;
 N:=Test_verlinde(n,k);; # lista de matrices (N_i)_{jk}=N_{ij}^k
 d:=Size(N);; # dimension del algebra de fusion
 T:=NullMat(d,d);;
