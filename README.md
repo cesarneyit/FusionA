@@ -159,7 +159,7 @@ gap> ZestA23.Tmatrix;
   [ 0, 0, 0, 0, 0, 0, E(3)^2, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, E(3), 0, 0 ], 
   [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ] ]
 ```
-The next fusion test that in fact the pair of matrix is a modar data
+The next function test that in fact the pair of matrices is a modar data. (It test: (1) that normalized S and T are unitary, (2) S_{0a}>0, (3) (ST)^3=Gauus_Sum(S,T)*S^2 )
 
 ```GAP
 IsModularData(ZestA23.Smatrix,ZestA23.Tmatrix);
@@ -216,7 +216,8 @@ gap> zA45:=Zesting_FusionAlgebra(4,5,[1,3]);;time;
 779499
 gap> v:=zA45.Simples;;
 ```
-We can see again that the exponent of v.2 changed from 5 to 25
+We can see again that the exponent of v.2 changed from 5 to 
+15
 
 ```GAP
 gap> v.2^5;
