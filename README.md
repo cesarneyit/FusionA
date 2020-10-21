@@ -140,7 +140,7 @@ gap>
 ```
 If we use the pair [1,2] we can construct the modular data  as follows:
 ```GAP
-gap> ZestA23:=Zesting_Modular_Data(2,3,[2,1]);;
+gap> ZestA23:=Zesting_Modular_Data(2,3,[1,2]);;
 gap> ZestA23.Smatrix;
 [ [ 1, 2, 2, 1, 2, 3, 2, 2, 2, 1 ], 
   [ 2, -2*E(9)^7, -2*E(9)^2, 2*E(3), 2*E(9)^2+2*E(9)^5, 0, 2*E(9)^4+2*E(9)^7, 
@@ -165,7 +165,7 @@ gap> ZestA23.Tmatrix;
   [ 0, 0, 0, 0, 0, 0, E(9)^7, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, E(9)^4, 0, 0 ], 
   [ 0, 0, 0, 0, 0, 0, 0, 0, E(9)^4, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ] ]
 ```
-We also can construct the fusion algebra using:
+We can construct the fusion algebra using:
 
 ```GAP
 gap> Zesting_FusionAlgebra(2,3,[1,2]);; # record of fusion algebra and canonical basis
