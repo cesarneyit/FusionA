@@ -120,4 +120,73 @@ v.6
 gap> v.126^5;
 v.1
 ```
+## Zesting SU(N)_k
+
+FusionA allows to zest the fusion rules and modular data of SU(N)_k
+
+The next fusion provides some information of the pairs that you can use to zest SU(N)_k
+
+```GAP
+gap> Display_Info_Zesting(2,3);
+
+The generator of the transparent objects of PGL(3,3)
+is the power 1 of the simple object v.10
+and its twist is 1
+The pairs for computing braided zestings are
+[ 0, 0 ]
+[ 1, 2 ]
+[ 2, 1 ]
+gap> 
+```
+If we use the pair [1,2] we can construct the modular data  as follows:
+```GAP
+gap> ZestA23:=Zesting_Modular_Data(2,3,[2,1]);;
+gap> ZestA23.Smatrix;
+[ [ 1, 2, 2, 1, 2, 3, 2, 2, 2, 1 ], 
+  [ 2, -2*E(9)^7, -2*E(9)^2, 2*E(3), 2*E(9)^2+2*E(9)^5, 0, 2*E(9)^4+2*E(9)^7, 
+      -2*E(9)^4, -2*E(9)^5, 2*E(3)^2 ], 
+  [ 2, -2*E(9)^2, -2*E(9)^7, 2*E(3)^2, 2*E(9)^4+2*E(9)^7, 0, 
+      2*E(9)^2+2*E(9)^5, -2*E(9)^5, -2*E(9)^4, 2*E(3) ], 
+  [ 1, 2*E(3), 2*E(3)^2, 1, 2*E(3)^2, 3, 2*E(3), 2*E(3), 2*E(3)^2, 1 ], 
+  [ 2, 2*E(9)^2+2*E(9)^5, 2*E(9)^4+2*E(9)^7, 2*E(3)^2, -2*E(9)^4, 0, 
+      -2*E(9)^5, -2*E(9)^2, -2*E(9)^7, 2*E(3) ], 
+  [ 3, 0, 0, 3, 0, -3, 0, 0, 0, 3 ], 
+  [ 2, 2*E(9)^4+2*E(9)^7, 2*E(9)^2+2*E(9)^5, 2*E(3), -2*E(9)^5, 0, -2*E(9)^4, 
+      -2*E(9)^7, -2*E(9)^2, 2*E(3)^2 ], 
+  [ 2, -2*E(9)^4, -2*E(9)^5, 2*E(3), -2*E(9)^2, 0, -2*E(9)^7, 
+      2*E(9)^4+2*E(9)^7, 2*E(9)^2+2*E(9)^5, 2*E(3)^2 ], 
+  [ 2, -2*E(9)^5, -2*E(9)^4, 2*E(3)^2, -2*E(9)^7, 0, -2*E(9)^2, 
+      2*E(9)^2+2*E(9)^5, 2*E(9)^4+2*E(9)^7, 2*E(3) ], 
+  [ 1, 2*E(3)^2, 2*E(3), 1, 2*E(3), 3, 2*E(3)^2, 2*E(3)^2, 2*E(3), 1 ] ]
+gap> ZestA23.Tmatrix;
+[ [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [ 0, -E(9)^4-E(9)^7, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, -E(9)^4-E(9)^7, 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, E(9)^7, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, -1, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, E(9)^7, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, E(9)^4, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, E(9)^4, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ] ]
+```
+We also can construct the fusion algebra using:
+
+```GAP
+gap> Zesting_FusionAlgebra(2,3,[1,2]);; # record of fusion algebra and canonical basis
+gap> v:=last.Simples;; # stracting the basis
+```
+Let us check that the fusion algebra of SU(3)_3 and its zesting are non-isomorphic. For this we will see that the exponent of v.2 (the standard representation) in the zesting has order 9 and not 3
+
+```GAP
+gap> v.2^3;
+v.4+(2)*v.6+v.10
+gap> v.2^4;
+(2)*v.2+(3)*v.7+(3)*v.8
+gap> v.2^5;
+(5)*v.3+(5)*v.5+(6)*v.9
+gap> v.2^6;
+(6)*v.1+(5)*v.4+(16)*v.6+(5)*v.10
+gap> v.2^7;
+(22)*v.2+(21)*v.7+(21)*v.8
+gap> v.2^8;
+(43)*v.3+(43)*v.5+(42)*v.9
+gap> v.2^9;
+(42)*v.1+(43)*v.4+(128)*v.6+(43)*v.10
+```
 
