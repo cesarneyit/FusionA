@@ -880,14 +880,14 @@ end;
 
 
 
-Zesting_Modular_Data:=function(n,k,pair)
+Zesting_Modular_Data:=function(n,k,pair,c)
 local MD,S,L,d,x,y,Tz,MDz,Szz,s,a,b,i,ij;
 MD:=ModularData_TipoA(n,k);
 S:=MD.Smatrix;
 L:=MD.labels;
 d:=Size(S);
 a:=2*pair[2]+epsilon(n,k);
-s:=E(2*(n+1)^2 )^a;
+s:=E(2*(n+1)^2 )^a*E(n+1)^c;
 Szz:=NullMat(d,d);
 Tz:=ShallowCopy(MD.Tmatrix);
 MDz:=ShallowCopy(MD);
