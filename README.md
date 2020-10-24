@@ -138,9 +138,10 @@ The pairs for computing braided zestings are
 [ 2, 1 ]
 gap> 
 ```
-If we use the pair [1,2] we can construct the modular data  as follows:
+If we use the pair [1,2] we can construct the modular data of the three zestings as follows:
 ```GAP
-gap> ZestA23:=Zesting_Modular_Data(2,3,[1,2]);;
+# zesting 1 
+gap> ZestA23:=Zesting_Modular_Data(2,3,[1,2],0);;
 gap> ZestA23.Smatrix;
 [ [ 1, 2, 2, 1, 2, 3, 2, 2, 2, 1 ], 
   [ 2, -2, -2*E(3)^2, 2*E(3), -2*E(3), 0, -2*E(3), -2*E(3)^2, -2, 2*E(3)^2 ], 
@@ -158,6 +159,44 @@ gap> ZestA23.Tmatrix;
   [ 0, 0, 0, 0, E(3), 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, -1, 0, 0, 0, 0 ], 
   [ 0, 0, 0, 0, 0, 0, E(3)^2, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, E(3), 0, 0 ], 
   [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ] ]
+# Zesting 2
+gap> ZestA23:=Zesting_Modular_Data(2,3,[1,2],1);;
+gap>  ZestA23.Smatrix;
+[ [ 1, 2, 2, 1, 2, 3, 2, 2, 2, 1 ], 
+  [ 2, -2*E(3)^2, -2, 2*E(3), -2*E(3)^2, 0, -2, -2*E(3), -2*E(3), 2*E(3)^2 ], 
+  [ 2, -2, -2*E(3), 2*E(3)^2, -2*E(3)^2, 0, -2*E(3)^2, -2*E(3), -2, 2*E(3) ], 
+  [ 1, 2*E(3), 2*E(3)^2, 1, 2*E(3)^2, 3, 2*E(3), 2*E(3), 2*E(3)^2, 1 ], 
+  [ 2, -2*E(3)^2, -2*E(3)^2, 2*E(3)^2, -2, 0, -2*E(3), -2, -2*E(3), 2*E(3) ], 
+  [ 3, 0, 0, 3, 0, -3, 0, 0, 0, 3 ], 
+  [ 2, -2, -2*E(3)^2, 2*E(3), -2*E(3), 0, -2*E(3), -2*E(3)^2, -2, 2*E(3)^2 ], 
+  [ 2, -2*E(3), -2*E(3), 2*E(3), -2, 0, -2*E(3)^2, -2, -2*E(3)^2, 2*E(3)^2 ], 
+  [ 2, -2*E(3), -2, 2*E(3)^2, -2*E(3), 0, -2, -2*E(3)^2, -2*E(3)^2, 2*E(3) ], 
+  [ 1, 2*E(3)^2, 2*E(3), 1, 2*E(3), 3, 2*E(3)^2, 2*E(3)^2, 2*E(3), 1 ] ]
+gap>  ZestA23.Tmatrix;
+[ [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [ 0, E(3)^2, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, E(3), 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, -1, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, E(3), 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, E(3)^2, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ] ]
+# Zesting 2
+gap> ZestA23:=Zesting_Modular_Data(2,3,[1,2],2);;
+gap>  ZestA23.Smatrix;
+[ [ 1, 2, 2, 1, 2, 3, 2, 2, 2, 1 ], 
+  [ 2, -2*E(3), -2*E(3), 2*E(3), -2, 0, -2*E(3)^2, -2, -2*E(3)^2, 2*E(3)^2 ], 
+  [ 2, -2*E(3), -2, 2*E(3)^2, -2*E(3), 0, -2, -2*E(3)^2, -2*E(3)^2, 2*E(3) ], 
+  [ 1, 2*E(3), 2*E(3)^2, 1, 2*E(3)^2, 3, 2*E(3), 2*E(3), 2*E(3)^2, 1 ], 
+  [ 2, -2, -2*E(3), 2*E(3)^2, -2*E(3)^2, 0, -2*E(3)^2, -2*E(3), -2, 2*E(3) ], 
+  [ 3, 0, 0, 3, 0, -3, 0, 0, 0, 3 ], 
+  [ 2, -2*E(3)^2, -2, 2*E(3), -2*E(3)^2, 0, -2, -2*E(3), -2*E(3), 2*E(3)^2 ], 
+  [ 2, -2, -2*E(3)^2, 2*E(3), -2*E(3), 0, -2*E(3), -2*E(3)^2, -2, 2*E(3)^2 ], 
+  [ 2, -2*E(3)^2, -2*E(3)^2, 2*E(3)^2, -2, 0, -2*E(3), -2, -2*E(3), 2*E(3) ], 
+  [ 1, 2*E(3)^2, 2*E(3), 1, 2*E(3), 3, 2*E(3)^2, 2*E(3)^2, 2*E(3), 1 ] ]
+gap>  ZestA23.Tmatrix;
+[ [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [ 0, E(3), 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, E(3)^2, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, -1, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, E(3)^2, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, E(3), 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ] ]
 ```
 The next function test that in fact the pair of matrices is a modar data. (It test: (1) that normalized S and T are unitary, (2) S_{0a}>0, (3) (ST)^3=Gauus_Sum(S,T)*S^2 )
 
@@ -168,7 +207,7 @@ IsModularData(ZestA23.Smatrix,ZestA23.Tmatrix);
 We can construct the fusion algebra using:
 
 ```GAP
-gap> Zesting_FusionAlgebra(2,3,[1,2]);; # record of fusion algebra and canonical basis
+gap> Zesting_FusionAlgebra(2,3,[1,2,0]);; # record of fusion algebra and canonical basis
 gap> v:=last.Simples;; # stracting the basis
 ```
 Let us check that the fusion algebra of SU(3)_3 and its zesting are non-isomorphic. For this we will see that the exponent of v.2 (the standard representation) in the zesting has order 9 and not 3
@@ -212,7 +251,7 @@ gap> IsModularData(zA45.Smatrix,zA45.Tmatrix);
 The fusion algebra 
 
 ```GAP
-gap> zA45:=Zesting_FusionAlgebra(4,5,[1,3]);;time;
+gap> zA45:=Zesting_FusionAlgebra(4,5,[1,3],0);;time;
 779499
 gap> v:=zA45.Simples;;
 ```
