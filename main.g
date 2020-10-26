@@ -838,6 +838,7 @@ end;
 
 
 
+
 epsilon:=function(n,k)
 local e,l;
 e:=0;
@@ -846,6 +847,18 @@ if RemInt(n+1,2)=0 and RemInt((n+1)/l,2)=1 and RemInt(k/l,2) =1 then
     e:=1;
 fi;
 return e;
+end;
+
+
+######
+# función usada en el proxima funcion
+######
+temporal:=function(a)
+local i;
+i:=1;
+if a=0 then i:=0;
+fi;
+return i;
 end;
 
 Display_Info_Zesting:=function(n,k)
@@ -869,7 +882,7 @@ for a in A
     do
         for b in B 
         do 
-            if RemInt(a*((n+1)/l)-e-2*b,n+1)=0 then
+            if RemInt(a*((n+1)/l)-temporal(a)*e^a-2*b,n+1)=0 then
                  Append(Zestings,[[a,b]]);
                  Print([a,b]);
                  Print("\n");
