@@ -930,7 +930,7 @@ end;
 ########
 zesting_verlinde:=function(n,k,par)
 local MD,test;
-MD:=Zesting_Modular_Data(n,k,par);
+MD:=Zesting_Modular_Data(n,k,par,0);
 return Verlinde_formula(MD.Smatrix);
 end;
 
