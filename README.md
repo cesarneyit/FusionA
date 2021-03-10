@@ -304,6 +304,38 @@ gap> v.2^15;
 130740)*v.116+(84462)*v.118+(10583)*v.126
 ```
 
+
+# Frobenius-Schur Indicator
+
+The following example shows how to compute the Frobenius-Schur Indicator of an object
+
+```GAP
+gap> Display_labels(2,3);
+
+L.   Grnd.   Twist
+(1)   [ 0, 0 ]   0
+(2)   [ 1, 0 ]   2/9
+(3)   [ 2, 0 ]   5/9
+(4)   [ 3, 0 ]   1
+(5)   [ 0, 1 ]   2/9
+(6)   [ 1, 1 ]   1/2
+(7)   [ 2, 1 ]   8/9
+(8)   [ 0, 2 ]   5/9
+(9)   [ 1, 2 ]   8/9
+(10)   [ 0, 3 ]   1
+```
+
+Now we can compute the FS indicators for the object [1,1] that corresponds to label (6)
+
+```GAP
+gap> FS_indicator(3,3,6,2); # second FS indicator
+1
+gap> FS_indicator(3,3,6,3); # third FS indicator
+2
+gap> FS_indicator(3,3,6,4); # fourth FS indicator
+1
+```
+
 # TODO:
 - Extend the program to fractional leveles.
 - Extend to all simple lie algebras.
