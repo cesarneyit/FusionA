@@ -957,3 +957,31 @@ for x in [1..Size(base)]
     od;
 return rec(FusionAlgebra:=Alg,Simples:=Base);
 end;
+
+
+
+######
+# Computes the FS n-indicator of SU(N)_k
+# x es el x-esimo simple
+####
+FS_indicator:=function(N,k,x,n)
+local MD,S,T,NN,FS,R,dimension;
+MD:=ModularData_TipoA(N-1,k);
+S:=MD.Smatrix;
+T:=MD.Tmatrix;
+NN:=Test_verlinde(N-1,k);; # lista de matrices (N_i)_{jk}=N_{ij}^k
+#FS(x):= 1/dim(C)sum_{i,j} N_{ij}^x S_{i,0} S_{j,0} (T_i/T_j)^2 
+R:=Size(Labels_A(N-1,k));
+FS:=0;
+dimension:=0;
+for i in [1..R] do
+        dimension:=S[i][1]^2+dimension;
+    od;
+
+for i in [1..R] do 
+    for j in [1..R] do 
+        FS:=NN[i][j][x]*S[i][1]*S[j][1]*(T[i][i]/T[j][j] )^n+FS;
+    od;
+od;
+return (1/dimension)*FS;
+end;
