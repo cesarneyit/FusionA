@@ -325,15 +325,15 @@ L.   Grnd.   Twist
 (10)   [ 0, 3 ]   1
 ```
 
-Now we can compute the FS indicators for the object [1,1] that corresponds to label (6)
+Now we can compute the FS indicators and we can see that SU(3,3) has FS-exponent 2
 
 ```GAP
-gap> FS_indicator(3,3,6,2); # second FS indicator
-1
-gap> FS_indicator(3,3,6,3); # third FS indicator
-2
-gap> FS_indicator(3,3,6,4); # fourth FS indicator
-1
+gap> FS_indicator(2,3,2);
+[ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0 ]
+gap> FS_indicator(2,3,3);
+[ 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 ]
+gap> FS_indicator(2,3,4);
+[ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0 ]
 ```
 
 # TODO:
