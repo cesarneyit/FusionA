@@ -325,7 +325,7 @@ L.   Grnd.   Twist
 (10)   [ 0, 3 ]   1
 ```
 
-Now we can compute the FS indicators and we can see that SU(3,3) has FS-exponent 2
+Now we can compute the list of all n-th FS indicators ( in the following example for SU(3,3) )
 
 ```GAP
 gap> FS_indicator(2,3,2);
