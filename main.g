@@ -1,8 +1,3 @@
-
-
-
-
-
 #####
 # Calcula la matriz de la forma bilineal en el producto, 
 # de tal forma que (r,r)=2 para las raices mas bajas
@@ -94,26 +89,12 @@ end;
 
 
 
-
-
-
 ######
 # action ciclica
 # 
 ########
 act_cyclic:=function(wt,g)
 return Permuted( wt, CycleFromList([1..Size(wt)]) );
-end;
-######
-##
-## Calcula numero de orbitas
-###
-Numero_orbitas:=function(n,k)
-local labels,G,orb;
-labels:=Labels_A_ext(n,k);
-G:=Group(CycleFromList([1..n+1]));
-orb:=Orbits(G,labels,act_cyclic);
-return [Size(Labels_A_ext(n,k)),Size(orb),Size(orb)/Size(Labels_A_ext(n,k))];
 end;
 
 
@@ -160,7 +141,7 @@ end;
 
 
 S_ij_m:=function(R,k,wt1,wt2)
-local W, K,x,w,rho,B_P;
+local W, K,x,w,rho,B_P,a,n;
 K:=0;
 n:=Size(SimpleSystem(R)); # rango de R
 x:=k+n+1; # nivel
@@ -223,7 +204,7 @@ r:=Size(labels);
 S:=NullMat(r,r); 
 for x in [1..r] do
     for y in [x..r] do
-        S[x][y]:=S_ij2(R,k,labels[x],labels[y]);
+        S[x][y]:=S_ij(R,k,labels[x],labels[y]);
         S[y][x]:=S[x][y];
     od;
 od;
@@ -261,7 +242,7 @@ r:=Size(labels);
 S:=NullMat(r,r); # identidad pero como matriz immutable
 for x in [1..r] do
     for y in [x..r] do
-        S[x][y]:=S_ij2(R,k,labels[x],labels[y]);
+        S[x][y]:=S_ij(R,k,labels[x],labels[y]);
         S[y][x]:=S[x][y];
     od;
 od;
@@ -277,7 +258,7 @@ r:=Size(labels);
 S:=NullMat(r,r); # identidad pero como matriz immutable
 for x in [1..r] do
     for y in [x..r] do
-        S[x][y]:=S_ij3(R,k,labels[x],labels[y]);
+        S[x][y]:=S_ij(R,k,labels[x],labels[y]);
         S[y][x]:=S[x][y];
     od;
 od;
@@ -293,7 +274,7 @@ r:=Size(labels);
 S:=NullMat(r,r); # identidad pero como matriz immutable
 for x in [1..r] do
     for y in [x..r] do
-        S[x][y]:=S_ij4(R,k,labels[x],labels[y]);
+        S[x][y]:=S_ij(R,k,labels[x],labels[y]);
         S[y][x]:=S[x][y];
     od;
 od;
@@ -963,7 +944,7 @@ end;
 # Computes the list of n-th FS-indicators of SU(N+1)_k
 ####
 FS_indicator:=function(N,k,n)
-local MD,S,T,NN,FS,R,dimension,list_FS;
+local MD,S,T,NN,FS,R,dimension,list_FS,i,x,j;
 MD:=ModularData_TipoA(N,k);
 S:=MD.Smatrix;
 T:=MD.Tmatrix;
